@@ -1,5 +1,6 @@
-import express, { Application, Request, Response } from "express";
-import { prisma } from "./app/lib/prisma";
+import express, { Application } from "express";
+
+import { router } from "./app/routes";
 
 const app: Application = express();
 
@@ -9,18 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-app.get("/", async (req: Request, res: Response) => {
-  const speciality = await prisma.speciality.create({
-    data: {
-      title: "Cadiology",
-    },
-  });
-
-  res.status(201).json({
-    success: true,
-    message: "api is working",
-    data: speciality,
-  });
-});
+// api endpoints routers
+app.use("/api/v1", router);
 
 export default app;
