@@ -6,3 +6,11 @@ dist
 build
 coverage/
 .DS_Store
+/generated/prisma
+.agents
+.claude
+.windsurf
+
+/src/generated/prisma
+
+/generated/prisma
